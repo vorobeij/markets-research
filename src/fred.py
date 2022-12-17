@@ -17,7 +17,7 @@ def load_fred_data(filename, label, startdate):
 
 def add_recession_areas(ax, start_date):
     column_name = 'Recessions'
-    df = load_fred_data('data/fred/recessions-JHDUSRGDPBR.csv', 'Recessions', startdate=start_date)
+    df = load_fred_data('data/fred/JHDUSRGDPBR.csv', 'Recessions', startdate=start_date)
     df['match'] = df[column_name].eq(df[column_name].shift())
     df = df.loc[df['match'] == False]
     df.drop(columns=['match'], inplace=True)

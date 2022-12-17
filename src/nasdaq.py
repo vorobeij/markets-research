@@ -22,7 +22,7 @@ def nsdq():
     ]
     charts_data = list()
     charts_data.append(load_ticker_yahoo('data/NSDQ.csv', start_date))
-    charts_data.append(load_fred_data('data/fred/m2-WM2NS.csv', "M2 (WM2NS)", start_date))
+    charts_data.append(load_fred_data('data/fred/WM2NS.csv', "M2 (WM2NS)", start_date))
     charts_data.append(load_fred_data('data/fred/WALCL.csv', "Assets: Total Assets: Total Assets (Less Eliminations from Consolidation): Wednesday Level (WALCL)", start_date))
     charts_data.append(load_fred_data('data/fred/GFDEGDQ188S.csv', "Federal Debt: Total Public Debt as Percent of Gross Domestic Product (GFDEGDQ188S)", start_date))
     charts_data.append(load_fred_data('data/fred/FPCPITOTLZGUSA.csv', "Inflation, consumer prices for the United States (FPCPITOTLZGUSA)", start_date))
