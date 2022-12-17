@@ -1,8 +1,7 @@
 import pandas as pd
 
 
-# https://fred.stlouisfed.org/series/JHDUSRGDPBR
-def load_recession_periods(filename, startdate):
+def load_fred_data(filename, startdate):
     df = pd.read_csv(filename)
     df['DATE'] = pd.to_datetime(df['DATE'])
     df.set_index('DATE', inplace=True)
@@ -11,7 +10,7 @@ def load_recession_periods(filename, startdate):
 
 def add_recession_areas(ax, start_date):
     column_name = 'JHDUSRGDPBR'
-    df = load_recession_periods('data/fundamentals/recession-JHDUSRGDPBR.csv', startdate=start_date)
+    df = load_fred_data('data/fred/recessions-JHDUSRGDPBR.csv', startdate=start_date)
     df['match'] = df[column_name].eq(df[column_name].shift())
     df = df.loc[df['match'] == False]
     df.drop(columns=['match'], inplace=True)
