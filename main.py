@@ -10,14 +10,13 @@ if __name__ == '__main__':
         # 'data/gt/gt-interest-rates.csv',
         'data/gt/gt-bull-run.csv'
     ]
-    gt_charts_df = load_gt(gt_files)
-
-    gt_charts_df.plot(figsize=(14, 6))
+    gtrends_charts_df = load_gt(gt_files)
 
     nsdq = load_ticker_yahoo('data/NSDQ.csv', start_date)
-    print(nsdq.head())
 
-    ax = nsdq.plot()
-    add_recession_areas(ax, start_date)
-    gt_charts_fig = gt_charts_df.plot(secondary_y=True, logy=True, ax=ax, figsize=(14, 6)).get_figure()
-    gt_charts_fig.savefig('output/plot.jpg')
+    plot = nsdq.plot()
+    add_recession_areas(plot, start_date)
+
+    fig = gtrends_charts_df.plot(secondary_y=True, logy=True, ax=plot, figsize=(16, 9)).get_figure()
+    fig.tight_layout()
+    fig.savefig('output/plot.jpg')
