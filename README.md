@@ -1,8 +1,7 @@
 # Business cycles analysis
 
-1. Update all data at data/fred from [fred](https://fred.stlouisfed.org)[recession data]. Example: (
-   data/fred/JHDUSRGDPBR.csv)
-   from https://fred.stlouisfed.org/series/JHDUSRGDPBR
+1. Update all data at data/fred from [fred](https://fred.stlouisfed.org). Example: `data/fred/JHDUSRGDPBR.csv`
+   from [fred](https://fred.stlouisfed.org/series/JHDUSRGDPBR)
 2. Download data from google trends
 3. Update indexes data (spx, nasdaq, btc...)
 4. Launch main.py
