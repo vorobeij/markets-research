@@ -45,9 +45,9 @@ def spx():
     charts_data.append(reload_fred_data('PSAVERT', "Personal Saving Rate (PSAVERT)", start_date, reload=reload))
     charts_data.append(reload_fred_data('TDSP', "Household Debt Service Payments as a Percent of Disposable Personal Income (TDSP)", start_date, reload=reload))
 
-    draw_charts(charts_data, start_date).savefig('output/nsdq-fred.pdf')
+    draw_charts(charts_data, start_date).savefig('output/spx-fred.pdf')
 
     charts_data.clear()
     charts_data.append(load_ticker_yahoo('^GSPC', start_date, reload=reload))
     charts_data.extend(load_google_trends(gt_files, start_date))
-    draw_charts(charts_data, start_date).savefig('output/nsdq-google-trends.pdf')
+    draw_charts(charts_data, start_date).savefig('output/spx-google-trends.pdf')
