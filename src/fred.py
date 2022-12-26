@@ -1,3 +1,4 @@
+import os
 import urllib.request
 
 import pandas as pd
@@ -5,7 +6,7 @@ import pandas as pd
 
 def add_recession_areas(ax, start_date):
     column_name = 'Recessions'
-    df = reload_fred_data(fred_url('JHDUSRGDPBR'), 'data/fred/JHDUSRGDPBR.csv', 'Recessions', startdate=start_date)
+    df = reload_fred_data('JHDUSRGDPBR', 'Recessions', startdate=start_date, reload=False)  # Recessions are not so often to reload them each time
     df['match'] = df[column_name].eq(df[column_name].shift())
     df = df.loc[df['match'] == False]
     df.drop(columns=['match'], inplace=True)
@@ -19,8 +20,9 @@ def add_recession_areas(ax, start_date):
 def reload_fred_data(symbol, label, startdate, reload=True):
     url = fred_url(symbol)
     filename = 'data/fred/' + symbol + '.csv'
-    print("loading " + url)
     if reload:
+        print("loading " + url)
+        os.remove(filename)
         urllib.request.urlretrieve(url, filename)
 
     df = pd.read_csv(filename)

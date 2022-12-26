@@ -1,10 +1,10 @@
 import time
 
 from src.btc import btc
-from src.nasdaq import nsdq
+from src.nasdaq import spx
 
 if __name__ == '__main__':
     start = time.time()
-    nsdq()
+    spx()
     btc()
     print(time.time() - start)

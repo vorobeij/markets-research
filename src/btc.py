@@ -12,7 +12,7 @@ def btc():
     ]
 
     charts_data = list()
-    charts_data.append(load_ticker_yahoo('data/BTC-USD.csv', start_date))
+    charts_data.append(load_ticker_yahoo('BTC-USD', start_date))
     charts_data.extend(load_google_trends(gt_files, start_date))
 
     draw_charts(charts_data, start_date).savefig('output/btc.pdf')
