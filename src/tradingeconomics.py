@@ -1,7 +1,7 @@
 from src.data import tradingeconomics_data
 
 
-def tradingeconomics_report():
+def macro_report():
     body = "".join(tradingeconomics_data())
 
     template = """
