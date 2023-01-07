@@ -2,7 +2,7 @@
 
 1. Download data from google trends
 4. Launch main.py
-5. See results at `output`
+5. See results at [dashboard.html](output/dashboard.html)
 
 # Ideas
 
