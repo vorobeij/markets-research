@@ -18,6 +18,6 @@ def macro_report():
     </body>
     </html>""".replace('$body', body)
 
-    text_file = open("../dashboard.html", "w")
+    text_file = open("dashboard.html", "w")
     text_file.write(template)
     text_file.close()
