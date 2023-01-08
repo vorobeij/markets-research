@@ -1,6 +1,8 @@
 def tradingeconomics_data():
     return [
+        title_block("Lagging indicators"),
         oecd_embed("Household debt", "6W6X"),
+        fred_embed("Personal Saving Rate (PSAVERT)", "YcRg"),
         oecd_embed("Household savings, Total, % of household disposable income", "6W6Z"),
         oecd_embed("Household disposable income, Gross, Per capita, percentage change, previous period last 8 quarters, Quarterly", "6W71"),
         oecd_embed("Household financial assets Shares and other equity, % of total financial assets 2021, Annual", "6W73"),
@@ -36,7 +38,6 @@ def tradingeconomics_data():
         fred_embed("Nonfinancial Corporate Business; Debt Securities and Loans; Liability, Level (BCNSDODNS)", "YcRe"),
         fred_embed("Consumer Price Index for All Urban Consumers: All Items in U.S. City Average (CPIAUCSL)", "XCad"),
         fred_embed("Velocity of M2 Money Stock (M2V)", "Y0jn"),
-        fred_embed("Personal Saving Rate (PSAVERT)", "YcRg"),
         fred_embed("Household Debt Service Payments as a Percent of Disposable Personal Income (TDSP)", "YbfT"),
         tradingeconomicsc("Germany Industrial Production", "gripiyoy&v=202212070832V20220312"),
         tradingeconomicsc("Japan Industrial Production", 'jnipyoy&v=202212140448V20220312'),
@@ -69,15 +70,15 @@ def gt_files():
 
 
 def tradingeconomicsc(name, symbol):
-    return "<div>" + name + "</div>" + "<iframe src='https://d3fy651gv2fhd3.cloudfront.net/embed/?s=euroareachaininv&v=202212071124V20220312&d1=19980102&h=300&w=600' height='300' width='600'  frameborder='0' scrolling='no'></iframe>".replace("euroareachaininv&v=202212071124V20220312", symbol)
+    return title_chart(name) + "<iframe src='https://d3fy651gv2fhd3.cloudfront.net/embed/?s=euroareachaininv&v=202212071124V20220312&d1=19980102&h=300&w=600' height='300' width='600'  frameborder='0' scrolling='no'></iframe>".replace("euroareachaininv&v=202212071124V20220312", symbol)
 
 
 def tradingview_embed(name, symbol):
-    return "<div>" + name + "</div>" + "<iframe src='xxx' height='300' width='600'  frameborder='0' scrolling='no'></iframe>".replace("xxx", "https://s.tradingview.com/widgetembed/?frameElementId=tradingview_c0869&symbol=BTCUSD&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=0&toolbarbg=rgba(255,%20255,%20255,%201)&studies=%5B%5D&hideideas=1&theme=White&style=2&timezone=Etc%2FUTC&withdateranges=1&hidevolume=1&studies_overrides=%7B%7D&overrides=%7B%22symbolWatermarkProperties.color%22%3A%22%23fff%22%2C%22volumePaneSize%22%3A%22tiny%22%7D&enabled_features=%5B%5D&disabled_features=%5B%22use_localstorage_for_settings%22%5D&locale=en&utm_source=tradingeconomics.com&utm_medium=widget&utm_campaign=chart&utm_term=INDEX%3ABDI#%7B%22page-uri%22%3A%22tradingeconomics.com%2Fcommodity%2Fbaltic%22%7D".replace("BTCUSD", symbol))
+    return title_chart(name) + "<iframe src='xxx' height='300' width='600'  frameborder='0' scrolling='no'></iframe>".replace("xxx", "https://s.tradingview.com/widgetembed/?frameElementId=tradingview_c0869&symbol=BTCUSD&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=0&toolbarbg=rgba(255,%20255,%20255,%201)&studies=%5B%5D&hideideas=1&theme=White&style=2&timezone=Etc%2FUTC&withdateranges=1&hidevolume=1&studies_overrides=%7B%7D&overrides=%7B%22symbolWatermarkProperties.color%22%3A%22%23fff%22%2C%22volumePaneSize%22%3A%22tiny%22%7D&enabled_features=%5B%5D&disabled_features=%5B%22use_localstorage_for_settings%22%5D&locale=en&utm_source=tradingeconomics.com&utm_medium=widget&utm_campaign=chart&utm_term=INDEX%3ABDI#%7B%22page-uri%22%3A%22tradingeconomics.com%2Fcommodity%2Fbaltic%22%7D".replace("BTCUSD", symbol))
 
 
 def fred_embed(name, symbolId):
-    return "<div>" + name + "</div>" + '<iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=symbolId&width=900&height=500" scrolling="no" frameborder="0" style="overflow:hidden; width:900px; height:600px;" allowTransparency="true" loading="lazy"></iframe>'.replace("symbolId", symbolId)
+    return title_chart(name) + '<iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=symbolId&width=900&height=500" scrolling="no" frameborder="0" style="overflow:hidden; width:900px; height:600px;" allowTransparency="true" loading="lazy"></iframe>'.replace("symbolId", symbolId)
 
 
 def oecd_embed(name, symbolId):
@@ -85,8 +86,16 @@ def oecd_embed(name, symbolId):
 
 
 def image_embed(name, url):
-    return "<div>" + name + "</div>" + '<img src="urllll"/>'.replace("urllll", url)
+    return title_chart(name) + '<img src="urllll"/>'.replace("urllll", url)
 
 
 def random_embed(name, url):
-    return "<div>" + name + "</div>" + '<iframe src="urllll" scrolling="no" frameborder="0" style="overflow:hidden; width:900px; height:600px;" allowTransparency="true" loading="lazy"></iframe>'.replace("urllll", url)
+    return title_chart(name) + '<iframe src="urllll" scrolling="no" frameborder="0" style="overflow:hidden; width:900px; height:600px;" allowTransparency="true" loading="lazy"></iframe>'.replace("urllll", url)
+
+
+def title_block(text):
+    return "<div><h1>" + text + "</h1></div>"
+
+
+def title_chart(text):
+    return "<div><h3>" + text + "</h3></div>"
