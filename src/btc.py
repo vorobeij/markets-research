@@ -1,4 +1,4 @@
-from src.charts import draw_charts
+from src.charts import draw_charts_above
 from src.google_trends import load_google_trends
 from src.yahoo import load_ticker_yahoo
 
@@ -6,13 +6,12 @@ from src.yahoo import load_ticker_yahoo
 def btc():
     start_date = "2015-01-01"
     gt_files = [
-        'data/gt/gt-crypto-winter.csv',
-        'data/gt/gt-meme-coin.csv',
-        'data/gt/gt-stock-market-bubble.csv'
+        'data/gt/gt-crypto-5y.csv',
+        'data/gt/gt-bitcoin-price-5y.csv',
+        'data/gt/gt-bitcoin-5y.csv'
     ]
-
     charts_data = list()
-    charts_data.append(load_ticker_yahoo('BTC-USD', start_date))
     charts_data.extend(load_google_trends(gt_files, start_date))
+    btc_df = load_ticker_yahoo('BTC-USD', start_date)
 
-    draw_charts(charts_data, start_date).savefig('output/btc.pdf')
+    draw_charts_above(btc_df, charts_data, start_date).savefig('output/btc.pdf')
