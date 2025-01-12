@@ -1,8 +1,16 @@
 # Business cycles analysis
 
-1. Download data from google trends
-4. Launch main.py
-5. See results at [dashboard.html](output/dashboard.html)
+> Correlation between Google Trends and BTC price
+
+1. Create `venv`
+2. Install dependencies
+    ```shell
+    pip install pipreqs
+    pip install -r src/requirements.txt
+    ```
+3. Launch `main.py`
+4. See results at [dashboard.html](output/btc-example.pdf)
+5. To see fresh results, download data from Google trends
 
 # Ideas
 
